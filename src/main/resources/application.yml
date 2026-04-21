@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: ocit-simulator
+  datasource:
+    url: jdbc:h2:mem:ocitdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+server:
+  port: 8081
+
+ocit:
+  server:
+    host: 0.0.0.0
+    port: 12001
+  protocol:
+    version: 3.0
+  c:
+    server:
+      port: 13000
+    client:
+      host: localhost
+      port: 13000
+
+datex2:
+  server:
+    port: 14000
+  simulator:
+    data-interval-ms: 5000
+    health-check-interval-ms: 30000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.ocit: DEBUG
+    org.springframework: INFO
